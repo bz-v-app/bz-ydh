@@ -1,0 +1,121 @@
+#total-eva-box{
+    width:670px;
+    margin:60px auto 0;
+    h2.title{
+        width:100%;
+        text-align: center;
+        font-family: PingFang-SC-Medium;
+        font-size: 30px;
+        font-weight: normal;
+        font-stretch: normal;
+        letter-spacing: 0px;
+        color: #333333;
+    }
+    .select-bx{
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-around;
+        align-items: center;
+        width:100%;
+        margin:41px 0 0;
+        .bx{
+            width:61px;
+            height:59px;
+            img{
+                width:100%;
+                height:100%;
+            }
+            .yellow-bx{
+                display: none;
+            }
+        }
+        .bx.yellow{
+            .yellow-bx{
+                display: block;
+            }
+            .black-bx{
+                display: none;
+            }
+        }
+    }
+
+    .input-eva-box{
+        width:100%;
+        margin:61px 0 0;
+        .inputEva{
+            width:100%;
+            height:240px;
+            resize: none;
+            box-sizing: border-box;
+            padding:25px 19px;
+            border-radius: 8px;
+            border: 1PX solid #e5e5e5;
+            font-family: PingFang-SC-Medium;
+            font-size: 26px;
+            font-weight: normal;
+            font-stretch: normal;
+            letter-spacing: 0px;
+            color: #999;
+        }
+    }
+
+    .special-eva-box{
+        width:100%;
+        overflow: hidden;
+        .special-one{
+            display: flex;
+            flex-flow: row nowrap;
+            justify-content: flex-start;
+            align-items: center;
+            width:100%;
+            margin:74px 0 0;
+            h3.title{
+                font-size: 30px;
+                width:5em;
+                font-family: PingFang-SC-Medium;
+                font-weight: normal;
+                font-stretch: normal;
+                letter-spacing: 0px;
+                color: #333;
+            }
+            .sx{
+                height:39px;
+                margin-left:39px;
+                img{
+                    width:41px;
+                    height:100%;
+                }
+                .yellow-sx{
+                    display: none;
+                }
+            }
+            .sx.yellow{
+                .yellow-sx{
+                    display: block;
+                }
+                .black-sx{
+                    display: none;
+                }
+            }
+        }
+    }
+}
+
+#submit-btn-box{
+    width:690px;
+    height:80px;
+    margin: 292px auto 0;
+    .submit-btn{
+        width:100%;
+        height: 100%;
+        background-color: #008ce6;
+        border-radius: 8px;
+        font-family: PingFang-SC-Medium;
+        font-size: 34px;
+        font-weight: normal;
+        font-stretch: normal;
+        letter-spacing: 0px;
+        color: #ffffff;
+        line-height: 80px;
+    }
+}

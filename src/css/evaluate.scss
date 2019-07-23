@@ -1,5 +1,8 @@
+body{
+    background-color:#fff;
+}
 #total-eva-box{
-    width:670px;
+    width:100%;
     margin:60px auto 0;
     h2.title{
         width:100%;
@@ -14,9 +17,11 @@
     .select-bx{
         display: flex;
         flex-flow: row nowrap;
-        justify-content: space-around;
+        justify-content: space-between;
         align-items: center;
         width:100%;
+        padding:0 106px 0 107px;
+        box-sizing: border-box;
         margin:41px 0 0;
         .bx{
             width:61px;
@@ -41,6 +46,8 @@
 
     .input-eva-box{
         width:100%;
+        padding:0 40px;
+        box-sizing: border-box;
         margin:61px 0 0;
         .inputEva{
             width:100%;
@@ -61,7 +68,8 @@
 
     .special-eva-box{
         width:100%;
-        overflow: hidden;
+        padding:0 40px;
+        box-sizing: border-box;
         .special-one{
             display: flex;
             flex-flow: row nowrap;
@@ -102,12 +110,13 @@
 }
 
 #submit-btn-box{
-    width:690px;
-    height:80px;
-    margin: 292px auto 0;
+    width:100%;
+    margin: 292px auto 30px;
+    padding:0 30px;
+    box-sizing: border-box;
     .submit-btn{
         width:100%;
-        height: 100%;
+        line-height: 80px;
         background-color: #008ce6;
         border-radius: 8px;
         font-family: PingFang-SC-Medium;
@@ -116,6 +125,6 @@
         font-stretch: normal;
         letter-spacing: 0px;
         color: #ffffff;
-        line-height: 80px;
+        
     }
 }

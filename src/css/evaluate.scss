@@ -87,7 +87,7 @@ body{
             }
             .sx{
                 height:39px;
-                margin-left:39px;
+                margin-left:31px;
                 img{
                     width:41px;
                     height:100%;
@@ -95,6 +95,9 @@ body{
                 .yellow-sx{
                     display: none;
                 }
+            }
+            .sx + .sx{
+                margin-left:39px;
             }
             .sx.yellow{
                 .yellow-sx{

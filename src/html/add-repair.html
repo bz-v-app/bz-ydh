@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">-->
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no" />
+    <title>报事报修</title>
+    <link rel="stylesheet" href="../css/layer.css">
+    <link rel="stylesheet" href="../css/mobileSelect.css">
+    <link rel="stylesheet" href="../css/add-repair.css">
+    <script>
+        !function(e){function t(a){if(i[a])return i[a].exports;var n=i[a]={exports:{},id:a,loaded:!1};return e[a].call(n.exports,n,n.exports,t),n.loaded=!0,n.exports}var i={};return t.m=e,t.c=i,t.p="",t(0)}([function(e,t){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var i=window;t["default"]=i.flex=function(e,t){var a=e||100,n=t||1,r=i.document,o=navigator.userAgent,d=o.match(/Android[\S\s]+AppleWebkit\/(\d{3})/i),l=o.match(/U3\/((\d+|\.){5,})/i),c=l&&parseInt(l[1].split(".").join(""),10)>=80,p=navigator.appVersion.match(/(iphone|ipad|ipod)/gi),s=i.devicePixelRatio||1;p||d&&d[1]>534||c||(s=1);var u=1/s,m=r.querySelector('meta[name="viewport"]');m||(m=r.createElement("meta"),m.setAttribute("name","viewport"),r.head.appendChild(m)),m.setAttribute("content","width=device-width,user-scalable=no,initial-scale="+u+",maximum-scale="+u+",minimum-scale="+u),r.documentElement.style.fontSize=a/2*s*n+"px"},e.exports=t["default"]}]);
+        flex(100, 1);
+    </script>
+</head>
+<body >
+<div class="add-repair-warp">
+    <div class="add-repair-cont">
+        <div class="add-repair-main">
+            <form id="add-repair-form">
+                <ul class="repair-main-item">
+                    <li>
+                        <div class="main-item-flex">
+                            <h3 class="title">报事店铺</h3>
+                            <div class="item-col-ipt">
+                                <input type="text" class="ipt-nomal" name="storename" placeholder="请输入报事店铺">
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="main-item-flex">
+                            <h3 class="title">报事人</h3>
+                            <div class="item-col-ipt">
+                                <input type="text" class="ipt-nomal" name="username" placeholder="请输入报事人">
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="main-item-flex">
+                            <h3 class="title">联系电话</h3>
+                            <div class="item-col-ipt">
+                                <input type="tel" class="ipt-nomal" name="phone" placeholder="请输入联系电话">
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="main-item-flex">
+                            <h3 class="title">报事类型</h3>
+                            <div class="item-col-ipt arr-right">
+                                <input type="hidden" class="ipt-nomal" name="repairType" placeholder="请选择报事类型">
+                                <div class="ipt-nomal-hold" id="repairType">
+                                    <span class="hold-ipt">请选择报事类型</span>
+                                </div>
+                                <i class="icon-down"></i>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="main-item-flex">
+                            <h3 class="title">报事项目</h3>
+                            <div class="item-col-ipt arr-right">
+                                <input type="hidden" class="ipt-nomal" name="repairName" placeholder="请选择报事项目">
+                                <div class="ipt-nomal-hold" id="repairName">
+                                    <span class="hold-ipt">请选择报事项目</span>
+                                </div>
+                                <i class="icon-down"></i>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="main-item-flex">
+                            <h3 class="title">紧急程度</h3>
+                            <div class="item-col-ipt arr-right">
+                                <input type="hidden" class="ipt-nomal" name="urgent" placeholder="请选择紧急程度">
+                                <div class="ipt-nomal-hold" id="urgent">
+                                    <span class="hold-ipt">请选择紧急程度</span>
+                                </div>
+                                <i class="icon-down"></i>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="main-item-flex">
+                            <h3 class="title">标题</h3>
+                            <div class="item-col-ipt">
+                                <input type="text" class="ipt-nomal" name="title" placeholder="请输入标题">
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="main-item-flex">
+                            <h3 class="title">预约时间</h3>
+                            <div class="item-col-ipt arr-right">
+                                <input type="hidden" class="ipt-nomal" name="reserveDate" placeholder="请输入预约时间">
+                                <div class="ipt-nomal-hold" id="reserveDate">
+                                    <span class="hold-ipt">请选择预约时间</span>
+                                </div>
+                                <i class="icon-down"></i>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="main-item-flex item-textarea">
+                            <h3 class="title">问题描述</h3>
+                            <div class="item-col-ipt">
+                                <textarea class="describe-text" placeholder="请输入问题描述"></textarea>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="last-item">
+                        <div class="main-item-flex upload-area">
+                            <h3 class="title">上传图片</h3>
+                            <div class="upload-area-img">
+                                <div class="upload-succ-img">
+                                    <ul>
+                                        <li>
+                                            <div class="upload-succ-img-in">
+                                                <label>
+                                                    <i class="close-btn"></i>
+                                                </label>
+                                                <div class="item-img">
+                                                    <img src="../images/hold-img.png" alt="" >
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="upload-succ-img-in">
+                                                <label>
+                                                    <i class="close-btn"></i>
+                                                </label>
+                                                <div class="item-img">
+                                                    <img src="../images/hold-img.png" alt="" >
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="upload-succ-img-in">
+                                                <label>
+                                                    <i class="close-btn"></i>
+                                                </label>
+                                                <div class="item-img">
+                                                    <img src="../images/hold-img.png" alt="" >
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="upload-succ-img-in">
+                                                <label>
+                                                    <i class="close-btn"></i>
+                                                </label>
+                                                <div class="item-img">
+                                                    <img src="../images/hold-img.png" alt="" >
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="upload-succ-img-in">
+                                                <label>
+                                                    <i class="close-btn"></i>
+                                                </label>
+                                                <div class="item-img">
+                                                    <img src="../images/hold-img.png" alt="" >
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="upload-succ-img-in">
+                                                <label>
+                                                    <i class="close-btn"></i>
+                                                </label>
+                                                <div class="item-img">
+                                                    <img src="../images/hold-img.png" alt="" >
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="upload-succ-img-in">
+                                                <label>
+                                                    <i class="close-btn"></i>
+                                                </label>
+                                                <div class="item-img">
+                                                    <img src="../images/hold-img.png" alt="" >
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="upload-succ-img-in">
+                                                <label>
+                                                    <i class="close-btn"></i>
+                                                </label>
+                                                <div class="item-img">
+                                                    <img src="../images/hold-img.png" alt="" >
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="upload-btn" id="upload-btn"></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </form>
+        </div>
+        <div class="add-repair-btn">
+            <button class="btn-submit" id="btn-submit">提交</button>
+        </div>
+    </div>
+</div>
+<script src="../js/lib/jquery-1.8.3.min.js"></script>
+<script src="../js/lib/fastclick.js"></script>
+<script src="../js/lib/layer.js"></script>
+<!--<script src="../js/lib/jquery-weui.js"></script>-->
+<script src="../js/mobileSelect.js"></script>
+<script src="../js/lib/selectDate-hm.js"></script>
+<!--<script src="../js/lib/dropload.js"></script>-->
+<!--<script src="../js/lib/jdate.js"></script>-->
+<script>
+    //日期格式化
+    var dateFtt = function(fmt, date) { //author: meizz
+        const o = {
+            "M+" : date.getMonth()+1,                 //月份
+            "d+" : date.getDate(),                    //日
+            "h+" : date.getHours(),                   //小时
+            "m+" : date.getMinutes(),                 //分
+            "s+" : date.getSeconds(),                 //秒
+            "q+" : Math.floor((date.getMonth()+3)/3), //季度
+            "S"  : date.getMilliseconds()             //毫秒
+        };
+        if(/(y+)/.test(fmt))
+            fmt=fmt.replace(RegExp.$1, (date.getFullYear()+"").substr(4 - RegExp.$1.length));
+        for(let k in o)
+            if(new RegExp("("+ k +")").test(fmt))
+                fmt = fmt.replace(RegExp.$1, (RegExp.$1.length === 1) ? (o[k]) : (("00"+ o[k]).substr((""+ o[k]).length)));
+        return fmt;
+    };
+
+    var mobileSelect1 = new MobileSelect({
+        trigger: '#repairType',
+        title: '请选择报事类型',
+        wheels: [
+            {
+                data:[
+                    {
+                        id: '1',
+                        value: '报事类型1'
+                    },
+                    {
+                        id: '2',
+                        value: '报事类型2'
+                    },
+                    {
+                        id: '3',
+                        value: '报事类型3'
+                    },
+                    {
+                        id: '4',
+                        value: '报事类型4'
+                    },
+                ]
+            }
+        ],
+        position:[2], //初始化定位
+        callback:function(indexArr, data){
+            console.log(data); //返回选中的json数据
+            $("input[name='repairType']").val(data[0].id)
+        }
+    });
+
+    var mobileSelect2 = new MobileSelect({
+        trigger: '#repairName',
+        title: '请选择报事项目',
+        wheels: [
+            {
+                data:[
+                    {
+                        id: '1',
+                        value: '紧急'
+                    },
+                    {
+                        id: '2',
+                        value: '不紧急'
+                    },
+                    {
+                        id: '3',
+                        value: '1紧急'
+                    },
+                    {
+                        id: '4',
+                        value: '2紧急'
+                    },
+                ]
+            }
+        ],
+        position:[2], //初始化定位
+        callback:function(indexArr, data){
+            console.log(data); //返回选中的json数据
+            $("input[name='repairName']").val(data[0].id)
+        }
+    });
+
+    var mobileSelect3 = new MobileSelect({
+        trigger: '#urgent',
+        title: '请选择紧急程度',
+        wheels: [
+            {
+                data:[
+                    {
+                        id: '1',
+                        value: '紧急'
+                    },
+                    {
+                        id: '2',
+                        value: '不紧急'
+                    },
+                    {
+                        id: '3',
+                        value: '1紧急'
+                    },
+                    {
+                        id: '4',
+                        value: '2紧急'
+                    },
+                ]
+            }
+        ],
+        position:[2], //初始化定位
+        callback:function(indexArr, data){
+            console.log(data); //返回选中的json数据
+            $("input[name='urgent']").val(data[0].id)
+        }
+    });
+
+    var lastDate = dateFtt("yyyy-MM-dd-hh-mm", new Date())
+    $.selectDate("#reserveDate",{
+        start:2000,
+        end: 2050,
+        select: lastDate.split("-"),
+        title:'请选择预约时间'
+    },function (data) {
+        $("input[name='reserveDate']").val(data.year + "-" + data.month + "-" + data.day + " " + data.hours + ":" + data.minutes )
+    });
+
+    /**
+     * 提交按钮
+     * */
+
+    $("#btn-submit").on("click", function (e) {
+
+        e.preventDefault()
+        var d = {};
+        var t = $('#add-repair-form').serializeArray();
+        $.each(t, function() {
+            d[this.name] = this.value;
+        });
+        console.log(d)
+    })
+
+
+</script>
+</body>
+</html>

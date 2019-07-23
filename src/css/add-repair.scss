@@ -1,0 +1,211 @@
+@import "common.scss";
+
+.add-repair-warp{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  .add-repair-cont{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding-bottom: 140px;
+    box-sizing: border-box;
+  }
+  .add-repair-main{
+    width: 100%;
+    height: 100%;
+    form{
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .repair-main-item{
+    width: 100%;
+    height: 100%;
+    padding: 0 30px;
+    box-sizing: border-box;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    li{
+      margin-top: 20px;
+      box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      background-color: #ffffff;
+    }
+    .last-item{
+      margin-bottom: 50px;
+    }
+  }
+  .main-item-flex{
+    display: flex;
+    flex-wrap: nowrap;
+    align-items:center;
+    justify-content: space-between;
+    width: 100%;
+    height: 80px;
+  }
+  .item-textarea{
+    align-items: flex-start;
+    height: auto;
+  }
+  .describe-text{
+    display: block;
+    width: 100%;
+    height: 100%;
+    min-height: 160px;
+    padding: 20px 30px;
+    box-sizing: border-box;
+    font-size: 26px;
+    color: #333;
+    resize: vertical;
+  }
+  .upload-area{
+    //align-items: flex-start;
+    flex-wrap: wrap;
+    height: auto;
+    .title{
+      width: 100%;
+    }
+  }
+  .upload-area-img{
+    width: 100%;
+    padding: 30px;
+    box-sizing: border-box;
+  }
+  .upload-succ-img{
+    ul{
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: flex-start;
+      li{
+        margin-top: 0;
+        margin-bottom: 40px;
+        width: 25%;
+        box-shadow: none;
+      }
+      .upload-succ-img-in{
+        position: relative;
+        width: 120px;
+        height: 120px;
+        background-color: #fafafa;
+        border-radius: 4px;
+      }
+      label{
+        position: absolute;
+        top: -30px;
+        right: -30px;
+        z-index: 99;
+        padding: 10px;
+      }
+      .close-btn{
+        display: block;
+        width: 40px;
+        height: 40px;
+        background: url(../images/close-icon.png) no-repeat;
+        background-size: 100%;
+      }
+      .item-img{
+        width: 100%;
+        height: 100%;
+        img{
+          display: block;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+      .upload-btn{
+        width: 120px;
+        height: 120px;
+        overflow: hidden;
+        background: url(../images/upload-btn-bg.png) no-repeat;
+        background-size: 100%;
+      }
+    }
+  }
+  .title{
+    width: 162px;
+    padding-left: 30px;
+    box-sizing: border-box;
+    font-size: 26px;
+    font-weight: normal;
+    font-stretch: normal;
+    letter-spacing: 0;
+    line-height: 80px;
+    color: #666666;
+    text-align: left;
+  }
+  .item-col-ipt{
+    flex: 1;
+    height: 100%;
+  }
+  .arr-right{
+    position: relative;
+    padding-right: 64px;
+    box-sizing: border-box;
+    .icon-down{
+      display: inline-block;
+      position: absolute;
+      right: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 20px;
+      height: 12px;
+      background: url(../images/icon-down.png) no-repeat;
+      background-size: 100%;
+    }
+  }
+  .ipt-nomal-hold{
+    width: 100%;
+    height: 100%;
+    padding: 0 28px;
+    font-size: 30px;
+    line-height: 80px;
+    box-sizing: border-box;
+  }
+  .hold-ipt{
+    color: #aaa;
+  }
+  .ipt-nomal{
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    padding: 0 28px;
+    font-size: 30px;
+    line-height: 1.5;
+  }
+  .add-repair-btn{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 30px;
+    box-sizing: border-box;
+    box-shadow: 0px 4px 20px 0px
+    rgba(0, 0, 0, 0.2);
+    background-color: #fff;
+  }
+  .btn-submit{
+    padding: 0;
+    display: block;
+    width: 100%;
+    height: 80px;
+    color: #fff;
+    font-size: 34px;
+    border-radius: 8px;
+    background-color: #008ce6;
+    transition-duration: .3s;
+    &:disabled{
+      background-color: #ddd;
+    }
+    &:active{
+      background-color: #0067a8;
+    }
+  }
+}

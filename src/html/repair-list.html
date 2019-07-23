@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="full-screen" content="yes">
+    <meta name="x5-fullscreen" content="true">
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">-->
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no" />
+    <title>报事记录</title>
+    <!--<link rel="stylesheet" href="../css/layer.css">-->
+    <!--<link rel="stylesheet" href="../css/mobileSelect.css">-->
+    <!--<link rel="stylesheet" href="../css/mobileSelect.css">-->
+    <link rel="stylesheet" href="../css/dropload.css">
+    <link rel="stylesheet" href="../css/repair-list.css">
+    <script>
+        !function(e){function t(a){if(i[a])return i[a].exports;var n=i[a]={exports:{},id:a,loaded:!1};return e[a].call(n.exports,n,n.exports,t),n.loaded=!0,n.exports}var i={};return t.m=e,t.c=i,t.p="",t(0)}([function(e,t){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var i=window;t["default"]=i.flex=function(e,t){var a=e||100,n=t||1,r=i.document,o=navigator.userAgent,d=o.match(/Android[\S\s]+AppleWebkit\/(\d{3})/i),l=o.match(/U3\/((\d+|\.){5,})/i),c=l&&parseInt(l[1].split(".").join(""),10)>=80,p=navigator.appVersion.match(/(iphone|ipad|ipod)/gi),s=i.devicePixelRatio||1;p||d&&d[1]>534||c||(s=1);var u=1/s,m=r.querySelector('meta[name="viewport"]');m||(m=r.createElement("meta"),m.setAttribute("name","viewport"),r.head.appendChild(m)),m.setAttribute("content","width=device-width,user-scalable=no,initial-scale="+u+",maximum-scale="+u+",minimum-scale="+u),r.documentElement.style.fontSize=a/2*s*n+"px"},e.exports=t["default"]}]);
+        flex(100, 1);
+    </script>
+</head>
+<body >
+<div class="repair-list-warp">
+    <div class="repair-list-cont">
+        <div class="repair-list-main">
+            <div class="tab">
+                <a href="javascript:;" class="item cur">
+                    <span class="item-label">处理中</span>
+                </a>
+                <a href="javascript:;" class="item">
+                    <span class="item-label">已完成</span>
+                </a>
+                <a href="javascript:;" class="item">
+                    <span class="item-label">全部</span>
+                </a>
+            </div>
+            <div class="content">
+                <div class="lists"></div>
+                <div class="lists"></div>
+                <div class="lists"></div>
+            </div>
+        </div>
+        <div class="repair-list-btn">
+            <button class="btn-submit" id="add-repair">新增报修</button>
+        </div>
+    </div>
+</div>
+<script src="../js/lib/jquery-1.8.3.min.js"></script>
+<script src="../js/lib/fastclick.js"></script>
+<!--<script src="../js/lib/layer.js"></script>-->
+<!--<script src="../js/lib/jquery-weui.js"></script>-->
+<!--<script src="../js/mobileSelect.js"></script>-->
+<!--<script src="../js/lib/selectDate-hm.js"></script>-->
+<script src="../js/lib/dropload.js"></script>
+<!--<script src="../js/lib/jdate.js"></script>-->
+<script>
+    $(function(){
+        $("#add-repair").on("click", function () {
+            window.location.href = 'add-repair.html'
+        });
+
+        var itemIndex = 0;
+        var tab1LoadEnd = false;
+        var tab2LoadEnd = false;
+        var tab3LoadEnd = false;
+        // tab
+        $('.tab .item').on('click',function(){
+            var $this = $(this);
+            itemIndex = $this.index();
+
+            $this.addClass('cur').siblings('.item').removeClass('cur');
+            $('.lists').eq(itemIndex).html("").show().siblings('.lists').hide();
+            // 如果选中菜单一
+            if(itemIndex === '0'){
+                // 如果数据没有加载完
+                if(!tab1LoadEnd){
+                    // 解锁
+                    dropload.unlock();
+                    dropload.noData(false);
+                }else{
+                    // 锁定
+                    dropload.lock('down');
+                    dropload.noData();
+                }
+                // 如果选中菜单二
+            }else if(itemIndex === '1'){
+                if(!tab2LoadEnd){
+                    // 解锁
+                    dropload.unlock();
+                    dropload.noData(false);
+                }else{
+                    // 锁定
+                    dropload.lock('down');
+                    dropload.noData();
+                }
+            }else if(itemIndex === '2'){
+                if(!tab3LoadEnd){
+                    // 解锁
+                    dropload.unlock();
+                    dropload.noData(false);
+                }else{
+                    // 锁定
+                    dropload.lock('down');
+                    dropload.noData();
+                }
+            }
+            // 重置
+            dropload.resetload();
+        });
+
+        var counter = 0;
+        // 每页展示4个
+        var num = 4;
+        var pageStart = 0,pageEnd = 0;
+
+        // dropload
+        var dropload = $('.content').dropload({
+            // domDown : {
+            //     domClass   : 'dropload-down',
+            //     domRefresh : '<div class="dropload-refresh">↑上拉加载更多</div>',
+            //     domLoad    : '<div class="dropload-load"><span class="loading"></span><span class="loading-text">加载中...</span></div>',
+            //     domNoData  : '<div class="dropload-noData">暂无数据</div>'
+            // },
+            // scrollArea : window,
+            loadDownFn : function(me){
+                // 加载菜单一的数据
+                if(itemIndex === 0){
+                    $.ajax({
+                        type: 'GET',
+                        url: '../js/lib/more.json',
+                        dataType: 'json',
+                        success: function(data){
+                            var result = '';
+                            counter++;
+                            pageEnd = num * counter;
+                            pageStart = pageEnd - num;
+
+                            if(pageStart <= data.lists.length){
+                                for(var i = pageStart; i < pageEnd; i++){
+                                    result += '<div class="item opacity">' +
+                                            '<div class="item-inner">' +
+                                                '<h3 class="tab-title">' +
+                                                    '<div class="title-text">'+ data.lists[i].title +'</div>' +
+                                                    '<div class="status isdeal appraise">已处理</div>' +
+                                                '</h3>' +
+                                                '<div class="tab-main">' +
+                                                    '<div class="tab-main-times">' +
+                                                        '<span class="times-name">报修时间：</span>' +
+                                                        '<span class="res">'+ data.lists[i].date +'</span>' +
+                                                    '</div>'+
+                                                    '<div class="tab-main-describe">' +
+                                                        '<p class="times-name">关于问题描述关于问题描述关于问题描述关于问题描述关于问题描述关于问题描述关于问题描述关于问题描</p>' +
+                                                    '</div>'+
+                                                    '<div class="tab-main-btn">' +
+                                                        '<button class="btn-primary">评价</button>' +
+                                                    '</div>'+
+                                                '</div>'
+                                            +'</div>'
+                                        +'</div>';
+                                    if((i + 1) >= data.lists.length){
+                                        // 数据加载完
+                                        tab1LoadEnd = true;
+                                        // 锁定
+                                        me.lock();
+                                        // 无数据
+                                        me.noData();
+                                        break;
+                                    }
+                                }
+                                // 为了测试，延迟1秒加载
+                                setTimeout(function(){
+                                    $('.lists').eq(0).append(result);
+                                    // 每次数据加载完，必须重置
+                                    me.resetload();
+                                },1000);
+                            }
+                        },
+                        error: function(xhr, type){
+                            alert('Ajax error!');
+                            // 即使加载出错，也得重置
+                            me.resetload();
+                        }
+                    });
+                    // 加载菜单二的数据
+                }else if(itemIndex === 1){
+
+                    $.ajax({
+                        type: 'GET',
+                        url: '../js/lib/more.json',
+                        dataType: 'json',
+                        success: function(data){
+                            var result = '';
+                            for(var i = 0; i < data.lists.length; i++){
+                                result +=  '<div class="item opacity">' +
+                                        '<div class="item-inner">' +
+                                            '<h3 class="tab-title">' +
+                                                '<div class="title-text">'+ data.lists[i].title +'</div>' +
+                                                '<div class="status isdeal appraise">已处理</div>' +
+                                            '</h3>' +
+                                            '<div class="tab-main">' +
+                                                '<div class="tab-main-times">' +
+                                                    '<span class="times-name">报修时间：</span>' +
+                                                    '<span class="res">'+ data.lists[i].date +'</span>' +
+                                                '</div>'+
+                                                '<div class="tab-main-describe">' +
+                                                    '<p class="times-name">关于问题描述关于问题描述关于问题描述关于问题描述关于问题描述关于问题描述关于问题描述关于问题描</p>' +
+                                                '</div>'+
+                                                '<div class="tab-main-btn">' +
+                                                    '<button class="btn-primary">评价</button>' +
+                                                '</div>'+
+                                            '</div>'
+                                        +'</div>'
+                                    +'</div>';
+                            }
+                            // 为了测试，延迟1秒加载
+                            setTimeout(function(){
+                                $('.lists').eq(1).append(result);
+                                // 每次数据加载完，必须重置
+                                me.resetload();
+                            },1000);
+                        },
+                        error: function(xhr, type){
+                            alert('Ajax error!');
+                            // 即使加载出错，也得重置
+                            me.resetload();
+                        }
+                    });
+                }else if(itemIndex === 2){
+                    $.ajax({
+                        type: 'GET',
+                        url: '../js/lib/more.json',
+                        dataType: 'json',
+                        success: function(data){
+                            var result = '';
+                            for(var i = 0; i < data.lists.length; i++){
+                                result +=   '<div class="item opacity">' +
+                                        '<div class="item-inner">' +
+                                            '<h3 class="tab-title">' +
+                                                '<div class="title-text">'+ data.lists[i].title +'</div>' +
+                                                '<div class="status isdeal">已处理</div>' +
+                                            '</h3>' +
+                                            '<div class="tab-main">' +
+                                                '<div class="tab-main-times">' +
+                                                    '<span class="times-name">报修时间：</span>' +
+                                                    '<span class="res">'+ data.lists[i].date +'</span>' +
+                                                '</div>'+
+                                                '<div class="tab-main-describe">' +
+                                                    '<p class="times-name">关于问题描述关于问题描述关于问题描述关于问题描述关于问题描述关于问题描述关于问题描述关于问题描</p>' +
+                                                '</div>'+
+                                                '<div class="tab-main-btn">' +
+                                                    '<button class="btn-primary">评价</button>' +
+                                                '</div>'+
+                                            '</div>'
+                                        +'</div>'
+                                    +'</div>';
+                            }
+                            // 为了测试，延迟1秒加载
+                            setTimeout(function(){
+                                $('.lists').eq(2).append(result);
+                                // 每次数据加载完，必须重置
+                                me.resetload();
+                            },1000);
+                        },
+                        error: function(xhr, type){
+                            alert('Ajax error!');
+                            // 即使加载出错，也得重置
+                            me.resetload();
+                        }
+                    });
+                }
+            }
+        });
+    });
+</script>
+</body>
+</html>

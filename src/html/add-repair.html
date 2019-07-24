@@ -104,7 +104,7 @@
                         <div class="main-item-flex item-textarea">
                             <h3 class="title">问题描述</h3>
                             <div class="item-col-ipt">
-                                <textarea class="describe-text" placeholder="请输入问题描述"></textarea>
+                                <textarea class="describe-text" name="describe" placeholder="请输入问题描述"></textarea>
                             </div>
                         </div>
                     </li>
@@ -354,7 +354,64 @@
         $.each(t, function() {
             d[this.name] = this.value;
         });
-        console.log(d)
+
+        if(!d.storename){
+            layer.open({
+                content: '请输入报事店铺'
+                ,skin: 'msg'
+                ,time: 2 //2秒后自动关闭
+            });
+        }else if(!d.username){
+            layer.open({
+                content: '请输入报事人'
+                ,skin: 'msg'
+                ,time: 2 //2秒后自动关闭
+            });
+        }else if(!d.phone){
+            layer.open({
+                content: '请输入联系电话'
+                ,skin: 'msg'
+                ,time: 2 //2秒后自动关闭
+            });
+        }else if(!d.repairType){
+            layer.open({
+                content: '请选择报事类型'
+                ,skin: 'msg'
+                ,time: 2 //2秒后自动关闭
+            });
+        }else if(!d.repairName){
+            layer.open({
+                content: '请选择报事项目'
+                ,skin: 'msg'
+                ,time: 2 //2秒后自动关闭
+            });
+        }else if(!d.urgent){
+            layer.open({
+                content: '请选择紧急程度'
+                ,skin: 'msg'
+                ,time: 2 //2秒后自动关闭
+            });
+        }else if(!d.title){
+            layer.open({
+                content: '请输入标题'
+                ,skin: 'msg'
+                ,time: 2 //2秒后自动关闭
+            });
+        }else if(!d.reserveDate){
+            layer.open({
+                content: '请选择预约时间'
+                ,skin: 'msg'
+                ,time: 2 //2秒后自动关闭
+            });
+        }else if(!d.describe){
+            layer.open({
+                content: '请输入问题描述'
+                ,skin: 'msg'
+                ,time: 2 //2秒后自动关闭
+            });
+        } else {
+            console.log(d)
+        }
     })
 
 

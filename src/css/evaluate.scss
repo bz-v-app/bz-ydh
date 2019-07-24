@@ -4,7 +4,7 @@ body{
 }
 .total-eva-box{
     width:100%;
-    margin:60px auto 0;
+    margin:60px auto 300px;
     h2.title{
         width:100%;
         text-align: center;
@@ -119,11 +119,12 @@ body{
 }
 
 .submit-btn-box{
-    position: absolute;
-    bottom:15px;
+    position: fixed;
+    bottom:0;
     width:100%;
-    padding:0 30px;
+    padding:30px 30px;
     box-sizing: border-box;
+    background-color:#fff;
     .submit-btn{
         width:100%;
         line-height: 32px;

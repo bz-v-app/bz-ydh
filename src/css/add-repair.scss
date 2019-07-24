@@ -6,7 +6,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: #fff;
+  background-color: #FAFAFA;
   .add-repair-cont{
     position: relative;
     width: 100%;
@@ -35,6 +35,7 @@
       margin-top: 20px;
       box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
       border-radius: 8px;
+      overflow: hidden;
       background-color: #ffffff;
     }
     .last-item{
@@ -88,6 +89,7 @@
         margin-bottom: 40px;
         width: 25%;
         box-shadow: none;
+        overflow: inherit;
       }
       .upload-succ-img-in{
         position: relative;
